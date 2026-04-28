@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KANVAS — Video Editing Portfolio | Kanha</title>
+  <meta name="description" content="KANVAS — Story-driven video editing for creators and brands. Portfolio of Kanha, a video editor based in Mumbai specializing in reels, brand videos, and cinematic content." />
+  <meta property="og:title" content="KANVAS — Video Editor | Kanha" />
+  <meta property="og:description" content="Story-driven video edits for creators and brands. Based in Mumbai." />
+  <meta property="og:image" content="profile.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KANVAS — Video Editor | Kanha" />
+  <meta name="twitter:description" content="Story-driven video edits for creators and brands." />
+  <meta name="twitter:image" content="profile.jpg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== LOADER ===== -->
+  <div id="loader">KANVAS</div>
+
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div id="scroll-progress"></div>
+
+  <!-- ===== CUSTOM CURSOR ===== -->
+  <div id="custom-cursor"></div>
+  <div id="custom-cursor-follower"></div>
+
+  <!-- ===== 3D BACKGROUND ===== -->
+  <div class="canvas-container">
+    <canvas id="bg-canvas" class="bg-canvas"></canvas>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">KANVAS</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="#showreel">Reel</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn-hire">Hire Me</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-headline">
+        <span class="word" style="animation-delay:0s">Visuals</span>
+        <span class="word" style="animation-delay:0.12s">that</span>
+        <span class="word" style="animation-delay:0.24s">make</span>
+        <span class="word" style="animation-delay:0.36s">people</span>
+        <span class="word gradient-text" style="animation-delay:0.48s">stop.</span>
+      </h1>
+      <p class="hero-tagline">Story-driven edits that help creators and brands cut through the noise.</p>
+      <div class="hero-buttons">
+        <a href="#work" class="btn-view-work">View Work</a>
+        <a href="#showreel" class="btn-watch-reel">Watch Reel</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SHOWREEL ===== -->
+  <section class="showreel" id="showreel">
+    <div class="container">
+      <p class="section-label reveal">Showreel 2025–26</p>
+      <div class="showreel-embed reveal reveal-delay-1">
+        <div class="reel-placeholder">
+          <div class="play-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8,5 19,12 8,19"/></svg>
+          </div>
+          <span>Play Showreel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WORK ===== -->
+  <section class="work" id="work">
+    <div class="container">
+      <p class="section-label reveal">01 — Selected Work</p>
+      <div class="work-grid">
+
+        <div class="work-card reveal" data-video="YOUR_VIDEO_ID" data-title="MediLife — Product Launch" data-desc="A cinematic brand film crafted for MediLife's flagship product launch, blending emotion with clarity.">
+          <div class="work-card-thumb"></div>
+          <div class="work-card-body">
+            <span class="work-tag">Brand Video</span>
+            <h3 class="work-card-title">MediLife — Product Launch</h3>
+            <p class="work-card-desc">A cinematic brand film crafted for MediLife's flagship product launch, blending emotion with clarity.</p>
+          </div>
+          <span class="work-card-arrow">→</span>
+        </div>
+
+        <div class="work-card reveal reveal-delay-1" data-video="YOUR_VIDEO_ID" data-title="Instagram Reels — Creator Series" data-desc="Scroll-stopping reels edited for top Instagram creators — fast pacing, punchy cuts, and trend-aware styling.">
+          <div class="work-card-thumb"></div>
+          <div class="work-card-body">
+            <span class="work-tag">Short-Form Content</span>
+            <h3 class="work-card-title">Instagram Reels — Creator Series</h3>
+            <p class="work-card-desc">Scroll-stopping reels edited for top Instagram creators — fast pacing, punchy cuts, and trend-aware styling.</p>
+          </div>
+          <span class="work-card-arrow">→</span>
+        </div>
+
+        <div class="work-card reveal reveal-delay-2" data-video="YOUR_VIDEO_ID" data-title="Quantum Coders — Pitch Reel" data-desc="A sharp, data-driven pitch reel designed to communicate the startup's vision with maximum impact.">
+          <div class="work-card-thumb"></div>
+          <div class="work-card-body">
+            <span class="work-tag">Presentation Video</span>
+            <h3 class="work-card-title">Quantum Coders — Pitch Reel</h3>
+            <p class="work-card-desc">A sharp, data-driven pitch reel designed to communicate the startup's vision with maximum impact.</p>
+          </div>
+          <span class="work-card-arrow">→</span>
+        </div>
+
+        <div class="work-card reveal reveal-delay-3" data-video="YOUR_VIDEO_ID" data-title="Mumbai — Personal Short Film" data-desc="A personal short film capturing Mumbai's rhythm — its streets, light, and layered chaos.">
+          <div class="work-card-thumb"></div>
+          <div class="work-card-body">
+            <span class="work-tag">Cinematic</span>
+            <h3 class="work-card-title">Mumbai — Personal Short Film</h3>
+            <p class="work-card-desc">A personal short film capturing Mumbai's rhythm — its streets, light, and layered chaos.</p>
+          </div>
+          <span class="work-card-arrow">→</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-inner reveal">
+        <span class="service-tag">Reels & Short-Form</span>
+        <span class="service-tag">Brand Videos</span>
+        <span class="service-tag">YouTube Editing</span>
+        <span class="service-tag">Motion Graphics</span>
+        <span class="service-tag">Colour Grading</span>
+        <span class="service-tag">Podcast Clips</span>
+        <span class="service-tag">Startup Launch Videos</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photo reveal-left">
+          <img src="profile.jpg" alt="Kanha - Video Editor">
+        </div>
+        <div class="about-text reveal-right">
+          <h2>About</h2>
+          <p id="bio-text">Hey — I'm Kanha, a video editor based in Mumbai. I work in DaVinci Resolve and specialise in content for Instagram creators, brand campaigns, and startup launches. Every frame should earn its place in the timeline.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-value">15+</div>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">3+</div>
+              <div class="stat-label">Yrs Editing</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">∞</div>
+              <div class="stat-label">Attention to Detail</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="contact-headline reveal">Let's make something <span class="gradient-italic">great</span> together.</h2>
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <h3>Get in touch</h3>
+          <div class="contact-links">
+            <a href="mailto:kanhaiyyalal812@gmail.com"><span class="link-icon">✉</span> kanhaiyyalal812@gmail.com</a>
+            <a href="https://www.instagram.com/kanhaiyya_8/" target="_blank" rel="noopener"><span class="link-icon">⟐</span> @kanhaiyya_8</a>
+            <a href="https://www.linkedin.com/in/kanhaiyyalal-mahajan-58b93236b" target="_blank" rel="noopener"><span class="link-icon">in</span> LinkedIn</a>
+            <a href="https://wa.me/918668427210?text=hey%20i%20want%20to%20know%20more%20about%20your%20services" target="_blank" rel="noopener"><span class="link-icon">✆</span> +91 8668427210</a>
+          </div>
+        </div>
+        <!-- Sign up at formspree.io, create a form, paste your ID here -->
+        <form class="contact-form reveal-right" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
+          <select name="project-type" id="project-type" required>
+            <option value="" disabled selected>Project type</option>
+            <option value="brand-video">Brand Video</option>
+            <option value="reels">Reels & Short-Form</option>
+            <option value="youtube">YouTube Editing</option>
+            <option value="motion">Motion Graphics</option>
+            <option value="other">Other</option>
+            <option value="other-option">Other option</option>
+          </select>
+          <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+          <button type="submit" class="btn-send">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">KANVAS</span>
+        <span class="footer-center">© 2026 Kanvas. Mumbai, India.</span>
+        <span class="footer-right">Built with intent.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== PROJECT MODAL ===== -->
+  <div class="project-modal" id="project-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close">✕</button>
+      <div class="modal-video-wrapper">
+        <iframe src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+      <h3 class="modal-title"></h3>
+      <p class="modal-desc"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
