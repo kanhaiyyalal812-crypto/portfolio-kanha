@@ -110,43 +110,46 @@ revealElements.forEach(el => {
   revealObserver.observe(el);
 });
 
-// === BIO TYPEWRITER ANIMATION ===
-const bioText = document.getElementById('bio-text');
-if (bioText) {
-  const fullText = bioText.textContent;
-  bioText.textContent = '';
-  bioText.style.borderRight = '2px solid rgba(255,255,255,0.7)';
-  bioText.style.animation = 'blink 0.6s step-end infinite';
+// === STATS COUNTER ANIMATION ===
+const stats = document.querySelectorAll('.stat-value');
+let hasCounted = false;
 
-  let typed = false;
+const statsOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.5
+};
 
-  const aboutSection = document.getElementById('about');
-  
-  const bioObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !typed) {
-        typed = true;
-        let i = 0;
-        const interval = setInterval(() => {
-          bioText.textContent = fullText.slice(0, i);
-          i++;
-          if (i > fullText.length) {
-            clearInterval(interval);
-            bioText.style.borderRight = 'none';
-            bioText.style.animation = 'none';
+const statsObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !hasCounted) {
+      hasCounted = true;
+      stats.forEach(stat => {
+        const target = +stat.getAttribute('data-target');
+        const isInfinity = stat.getAttribute('data-infinity');
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        
+        let current = 0;
+        const updateCount = () => {
+          current += increment;
+          if (current < target) {
+            stat.innerText = Math.ceil(current) + (isInfinity ? '' : '+');
+            requestAnimationFrame(updateCount);
+          } else {
+            stat.innerText = isInfinity ? '∞' : target + '+';
           }
-        }, 28);
-        if (aboutSection) bioObserver.unobserve(aboutSection);
-      }
-    });
-  }, { threshold: 0.3 });
+        };
+        updateCount();
+      });
+      observer.unobserve(entry.target);
+    }
+  });
+}, statsOptions);
 
-  if (aboutSection) {
-    bioObserver.observe(aboutSection);
-  } else {
-    // Fallback
-    bioObserver.observe(bioText);
-  }
+const aboutStatsContainer = document.querySelector('.about-stats');
+if (aboutStatsContainer) {
+  statsObserver.observe(aboutStatsContainer);
 }
 
 // === 3D TUBES BACKGROUND ===
@@ -165,9 +168,9 @@ if (bioText) {
         .map(() => "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0'));
     };
 
-    // Initial theme colors (Navy, Red, Orange, Warm White)
-    const initialTubesColors = ["#E0311F", "#FF6B35", "#F5F0E8"];
-    const initialLightsColors = ["#E0311F", "#FF6B35", "#050A14", "#F5F0E8"];
+    // Initial theme colors (Cyan, Purple, Silver)
+    const initialTubesColors = ["#00dfff", "#8b5cf6", "#eeeeee"];
+    const initialLightsColors = ["#00dfff", "#8b5cf6", "#050a14", "#ffffff"];
 
     const app = TubesCursor(canvas, {
       tubes: {
