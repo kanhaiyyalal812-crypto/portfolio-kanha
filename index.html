@@ -3,501 +3,281 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kanha | Video Editor Portfolio</title>
-  <meta name="description" content="Portfolio of Kanha, a video editor specialising in story-driven edits for creators and brands." />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ===== CSS RESET & VARIABLES ===== */
-    :root {
-      --bg: #0a0a0c;
-      --bg-surface: #141417;
-      --text-main: #f5f5f5;
-      --text-muted: #a1a1aa;
-      --accent: #ffffff;
-      --border: rgba(255, 255, 255, 0.08);
-      --font: 'Inter', sans-serif;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      font-family: var(--font);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    a { text-decoration: none; color: inherit; transition: var(--transition); }
-    ul { list-style: none; }
-    button { cursor: pointer; font-family: inherit; border: none; background: none; }
-    img { max-width: 100%; display: block; }
-    
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    
-    /* ===== ACCESSIBILITY ===== */
-    *:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 4px;
-      border-radius: 2px;
-    }
-    
-    /* ===== HEADER & NAVIGATION ===== */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(10, 10, 12, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      z-index: 100;
-      border-bottom: 1px solid var(--border);
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 80px;
-    }
-    .logo {
-      font-weight: 800;
-      font-size: 1.25rem;
-      letter-spacing: -0.5px;
-      color: var(--text-main);
-    }
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); }
-    .nav-links a:hover { color: var(--text-main); }
-    
-    /* ===== BUTTONS ===== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 28px;
-      border-radius: 4px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: var(--transition);
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: var(--bg);
-    }
-    .btn-primary:hover {
-      background: #e0e0e0;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(255,255,255,0.1);
-    }
-    .btn-secondary {
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border);
-    }
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-    
-    /* ===== TYPOGRAPHY & LAYOUT ===== */
-    section { padding: 120px 0; }
-    .section-title {
-      font-size: clamp(2rem, 4vw, 2.5rem);
-      font-weight: 800;
-      margin-bottom: 48px;
-      letter-spacing: -1px;
-      color: var(--text-main);
-    }
-    
-    /* ===== HERO SECTION ===== */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-top: 120px; /* Offset for fixed header */
-    }
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-    }
-    .hero h1 {
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 32px;
-      max-width: 900px;
-      color: var(--text-main);
-    }
-    .hero p {
-      font-size: clamp(1.1rem, 2vw, 1.3rem);
-      color: var(--text-muted);
-      max-width: 600px;
-      margin-bottom: 48px;
-    }
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 80px;
-    }
-    
-    /* ===== METRICS STRIP ===== */
-    .metrics {
-      display: flex;
-      gap: 64px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border);
-    }
-    .metric-item { display: flex; flex-direction: column; }
-    .metric-value { font-size: 2rem; font-weight: 800; margin-bottom: 4px; color: var(--text-main); }
-    .metric-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-    
-    /* ===== SHOWREEL SECTION ===== */
-    .showreel-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-      background: var(--bg-surface);
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    .showreel-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    
-    /* ===== WORK SECTION ===== */
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 32px;
-    }
-    .work-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-    }
-    .work-card:hover {
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-4px);
-    }
-    .work-thumb {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: #1f1f23;
-      position: relative;
-      overflow: hidden;
-    }
-    .work-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.8;
-      transition: var(--transition);
-    }
-    .work-card:hover .work-thumb img {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-    .work-info {
-      padding: 24px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .work-tags {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-    .tag {
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 100px;
-      color: var(--text-muted);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .work-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-      color: var(--text-main);
-    }
-    .work-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      flex-grow: 1;
-    }
-    .work-link {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      align-self: flex-start;
-    }
-    .work-link:hover { gap: 12px; }
-    
-    /* ===== CONTACT SECTION ===== */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-    }
-    .contact-info p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      max-width: 480px;
-    }
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .contact-link {
-      font-size: 1.15rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .contact-link-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      color: var(--text-muted);
-      transition: var(--transition);
-      font-size: 1.2rem;
-    }
-    .contact-link:hover .contact-link-icon {
-      background: var(--accent);
-      color: var(--bg);
-      border-color: var(--accent);
-    }
-    .contact-link:hover {
-      color: var(--text-main);
-    }
-    
-    /* ===== FOOTER ===== */
-    footer {
-      padding: 40px 0;
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-    .footer-text {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-    
-    /* ===== MOBILE RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hero-actions { flex-direction: column; }
-      .btn { width: 100%; }
-      .metrics { flex-direction: column; gap: 32px; border-top: none; padding-top: 0; }
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      section { padding: 80px 0; }
-    }
-  </style>
+  <title>KANVAS — Video Editing Portfolio | Kanha</title>
+  <meta name="description" content="KANVAS — Story-driven video editing for creators and brands. Portfolio of Kanha, a video editor based in Mumbai specializing in reels, brand videos, and cinematic content." />
+  <meta property="og:title" content="KANVAS — Video Editor | Kanha" />
+  <meta property="og:description" content="Story-driven video edits for creators and brands. Based in Mumbai." />
+  <meta property="og:image" content="profile.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KANVAS — Video Editor | Kanha" />
+  <meta name="twitter:description" content="Story-driven video edits for creators and brands." />
+  <meta name="twitter:image" content="profile.jpg" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header>
-    <div class="container">
-      <nav aria-label="Main navigation">
-        <a href="#" class="logo">KANVAS</a>
-        <div class="nav-links">
-          <a href="#showreel">Showreel</a>
-          <a href="#work">Work</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
+  <!-- ===== LOADER ===== -->
+  <div id="loader">KANVAS</div>
+
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div id="scroll-progress"></div>
+
+  <!-- ===== CUSTOM CURSOR ===== -->
+  <div id="custom-cursor"></div>
+  <div id="custom-cursor-follower"></div>
+
+  <!-- ===== 3D BACKGROUND ===== -->
+  <div class="canvas-container">
+    <canvas id="bg-canvas" class="bg-canvas"></canvas>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">KANVAS</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="#showreel">Reel</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn-hire">Hire Me</a>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- ===== MAIN CONTENT ===== -->
-  <main>
-    
-    <!-- ===== HERO SECTION ===== -->
-    <section class="hero" id="home">
-      <div class="container">
-        <span class="hero-eyebrow">Video Editor · Mumbai, India</span>
-        <h1>Visuals that make people stop.</h1>
-        <p>Story-driven edits that help creators and brands cut through the noise.</p>
-        
-        <div class="hero-actions">
-          <a href="#showreel" class="btn btn-primary">Watch Showreel</a>
-          <a href="#contact" class="btn btn-secondary">Hire Me</a>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-scanlines"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>Available for work
+      </div>
+      <div class="hero-eyebrow">Video Editor · Mumbai, India</div>
+      <h1 class="hero-headline">
+        <span class="word" style="animation-delay:0s">Visuals</span>
+        <span class="word" style="animation-delay:0.12s">that</span>
+        <span class="word" style="animation-delay:0.24s">make</span>
+        <span class="word" style="animation-delay:0.36s">people</span>
+        <span class="word gradient-text glitch" data-text="stop." style="animation-delay:0.48s">stop.</span>
+      </h1>
+      <p class="hero-tagline">Story-driven edits that help creators and brands cut through the noise.</p>
+      <div class="hero-meta">
+        <span>DaVinci Resolve</span>
+        <span class="hero-meta-dot">·</span>
+        <span>Reels & Brand</span>
+        <span class="hero-meta-dot">·</span>
+        <span>48hr Delivery</span>
+      </div>
+      <div class="hero-buttons">
+        <a href="#work" class="btn-view-work">View Work →</a>
+        <a href="#showreel" class="btn-watch-reel">Watch Reel</a>
+      </div>
+    </div>
+    <div class="hero-stats-strip">
+      <div class="hero-stat"><span class="hero-stat-n">15+</span><span class="hero-stat-l">Projects</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-n">3+</span><span class="hero-stat-l">Yrs Editing</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-n">48h</span><span class="hero-stat-l">Turnaround</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-n">∞</span><span class="hero-stat-l">Attention</span></div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Reels & Short-Form</span><span class="marquee-sep">✦</span>
+      <span>Brand Videos</span><span class="marquee-sep">✦</span>
+      <span>DaVinci Resolve</span><span class="marquee-sep">✦</span>
+      <span>Colour Grading</span><span class="marquee-sep">✦</span>
+      <span>Motion Graphics</span><span class="marquee-sep">✦</span>
+      <span>YouTube Editing</span><span class="marquee-sep">✦</span>
+      <span>Podcast Clips</span><span class="marquee-sep">✦</span>
+      <span>48hr Turnaround</span><span class="marquee-sep">✦</span>
+      <!-- duplicate all for seamless loop -->
+      <span>Reels & Short-Form</span><span class="marquee-sep">✦</span>
+      <span>Brand Videos</span><span class="marquee-sep">✦</span>
+      <span>DaVinci Resolve</span><span class="marquee-sep">✦</span>
+      <span>Colour Grading</span><span class="marquee-sep">✦</span>
+      <span>Motion Graphics</span><span class="marquee-sep">✦</span>
+      <span>YouTube Editing</span><span class="marquee-sep">✦</span>
+      <span>Podcast Clips</span><span class="marquee-sep">✦</span>
+      <span>48hr Turnaround</span><span class="marquee-sep">✦</span>
+    </div>
+  </div>
+
+  <!-- ===== SHOWREEL ===== -->
+  <section class="showreel" id="showreel">
+    <div class="container">
+      <p class="section-label reveal">Showreel 2025–26</p>
+      <div class="showreel-embed reveal reveal-delay-1">
+        <div class="reel-placeholder">
+          <div class="play-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8,5 19,12 8,19"/></svg>
+          </div>
+          <span>Play Showreel</span>
         </div>
-        
-        <div class="metrics">
-          <div class="metric-item">
-            <span class="metric-value">15+</span>
-            <span class="metric-label">Projects</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WORK ===== -->
+  <section class="work" id="work">
+    <div class="container">
+      <p class="section-label reveal">01 — Selected Work</p>
+      <div class="work-grid">
+
+        <div class="work-card reveal" data-video="YOUR_VIDEO_ID" data-title="MediLife — Product Launch" data-desc="A cinematic brand film crafted for MediLife's flagship product launch, blending emotion with clarity.">
+          <div class="work-card-thumb"></div>
+          <div class="work-card-body">
+            <span class="work-tag">Brand Video</span>
+            <h3 class="work-card-title">MediLife — Product Launch</h3>
+            <p class="work-card-desc">A cinematic brand film crafted for MediLife's flagship product launch, blending emotion with clarity.</p>
           </div>
-          <div class="metric-item">
-            <span class="metric-value">3+</span>
-            <span class="metric-label">Years Editing</span>
+          <span class="work-card-arrow">→</span>
+        </div>
+
+        <div class="work-card reveal reveal-delay-1" data-video="YOUR_VIDEO_ID" data-title="Instagram Reels — Creator Series" data-desc="Scroll-stopping reels edited for top Instagram creators — fast pacing, punchy cuts, and trend-aware styling.">
+          <div class="work-card-thumb"></div>
+          <div class="work-card-body">
+            <span class="work-tag">Short-Form Content</span>
+            <h3 class="work-card-title">Instagram Reels — Creator Series</h3>
+            <p class="work-card-desc">Scroll-stopping reels edited for top Instagram creators — fast pacing, punchy cuts, and trend-aware styling.</p>
           </div>
-          <div class="metric-item">
-            <span class="metric-value">48h</span>
-            <span class="metric-label">Turnaround</span>
+          <span class="work-card-arrow">→</span>
+        </div>
+
+        <div class="work-card reveal reveal-delay-2" data-video="YOUR_VIDEO_ID" data-title="Quantum Coders — Pitch Reel" data-desc="A sharp, data-driven pitch reel designed to communicate the startup's vision with maximum impact.">
+          <div class="work-card-thumb"></div>
+          <div class="work-card-body">
+            <span class="work-tag">Presentation Video</span>
+            <h3 class="work-card-title">Quantum Coders — Pitch Reel</h3>
+            <p class="work-card-desc">A sharp, data-driven pitch reel designed to communicate the startup's vision with maximum impact.</p>
+          </div>
+          <span class="work-card-arrow">→</span>
+        </div>
+
+        <div class="work-card reveal reveal-delay-3" data-video="YOUR_VIDEO_ID" data-title="Mumbai — Personal Short Film" data-desc="A personal short film capturing Mumbai's rhythm — its streets, light, and layered chaos.">
+          <div class="work-card-thumb"></div>
+          <div class="work-card-body">
+            <span class="work-tag">Cinematic</span>
+            <h3 class="work-card-title">Mumbai — Personal Short Film</h3>
+            <p class="work-card-desc">A personal short film capturing Mumbai's rhythm — its streets, light, and layered chaos.</p>
+          </div>
+          <span class="work-card-arrow">→</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-inner reveal">
+        <span class="service-tag">Reels & Short-Form</span>
+        <span class="service-tag">Brand Videos</span>
+        <span class="service-tag">YouTube Editing</span>
+        <span class="service-tag">Motion Graphics</span>
+        <span class="service-tag">Colour Grading</span>
+        <span class="service-tag">Podcast Clips</span>
+        <span class="service-tag">Startup Launch Videos</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photo reveal-left">
+          <img src="profile.jpg" alt="Kanha - Video Editor">
+        </div>
+        <div class="about-text reveal-right">
+          <h2>About</h2>
+          <p id="bio-text">Hey — I'm Kanha, a video editor based in Mumbai. I work in DaVinci Resolve and specialise in content for Instagram creators, brand campaigns, and startup launches. Every frame should earn its place in the timeline.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-value">15+</div>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">3+</div>
+              <div class="stat-label">Yrs Editing</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">∞</div>
+              <div class="stat-label">Attention to Detail</div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== SHOWREEL SECTION ===== -->
-    <section id="showreel">
-      <div class="container">
-        <h2 class="section-title">Showreel</h2>
-        <div class="showreel-container">
-          <!-- TODO: Replace this placeholder URL with your actual YouTube/Vimeo embed link -->
-          <iframe 
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&showinfo=0&autohide=1" 
-            title="Kanvas Showreel" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== WORK SECTION ===== -->
-    <section id="work">
-      <div class="container">
-        <h2 class="section-title">Selected Work</h2>
-        <div class="work-grid">
-          
-          <!-- Project 1 -->
-          <article class="work-card">
-            <div class="work-thumb">
-              <!-- Placeholder Thumbnail -->
-              <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=800&auto=format&fit=crop" alt="MediLife Product Launch video thumbnail">
-            </div>
-            <div class="work-info">
-              <div class="work-tags">
-                <span class="tag">Brand Video</span>
-                <span class="tag">DaVinci Resolve</span>
-              </div>
-              <h3 class="work-title">MediLife — Product Launch</h3>
-              <p class="work-desc">A cinematic brand film crafted for MediLife's flagship product launch, blending emotion with clarity.</p>
-              <!-- TODO: Replace "#" with your project URL -->
-              <a href="#" class="work-link" aria-label="Watch MediLife Product Launch">Watch Project &rarr;</a>
-            </div>
-          </article>
-
-          <!-- Project 2 -->
-          <article class="work-card">
-            <div class="work-thumb">
-              <!-- Placeholder Thumbnail -->
-              <img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?q=80&w=800&auto=format&fit=crop" alt="Instagram Reels Creator Series video thumbnail">
-            </div>
-            <div class="work-info">
-              <div class="work-tags">
-                <span class="tag">Short-Form</span>
-                <span class="tag">Motion Graphics</span>
-              </div>
-              <h3 class="work-title">Creator Series — Reels</h3>
-              <p class="work-desc">Scroll-stopping reels edited for top Instagram creators — fast pacing, punchy cuts, and trend-aware styling.</p>
-              <!-- TODO: Replace "#" with your project URL -->
-              <a href="#" class="work-link" aria-label="Watch Creator Series Reels">Watch Project &rarr;</a>
-            </div>
-          </article>
-
-          <!-- Project 3 -->
-          <article class="work-card">
-            <div class="work-thumb">
-              <!-- Placeholder Thumbnail -->
-              <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="Quantum Coders Pitch Reel video thumbnail">
-            </div>
-            <div class="work-info">
-              <div class="work-tags">
-                <span class="tag">Pitch Video</span>
-                <span class="tag">Colour Grading</span>
-              </div>
-              <h3 class="work-title">Quantum Coders — Pitch Reel</h3>
-              <p class="work-desc">A sharp, data-driven pitch reel designed to communicate the startup's vision with maximum visual impact.</p>
-              <!-- TODO: Replace "#" with your project URL -->
-              <a href="#" class="work-link" aria-label="Watch Quantum Coders Pitch Reel">Watch Project &rarr;</a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CONTACT SECTION ===== -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Let's Work Together</h2>
-        <div class="contact-grid">
-          <div class="contact-info">
-            <p>Ready to elevate your content? Drop me a message to discuss your next project, timeline, and rates.</p>
-          </div>
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="contact-headline reveal">Let's make something <span class="gradient-italic">great</span> together.</h2>
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <h3>Get in touch</h3>
           <div class="contact-links">
-            <a href="mailto:kanhaiyyalal812@gmail.com" class="contact-link" aria-label="Email me">
-              <span class="contact-link-icon">&#9993;</span> kanhaiyyalal812@gmail.com
-            </a>
-            <!-- TODO: Replace placeholder URLs below with your real social links -->
-            <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="LinkedIn profile">
-              <span class="contact-link-icon">in</span> LinkedIn
-            </a>
-            <a href="https://instagram.com/YOUR_INSTAGRAM" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Instagram profile">
-              <span class="contact-link-icon">&#10022;</span> Instagram
-            </a>
-            <a href="https://vimeo.com/YOUR_VIMEO" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Vimeo profile">
-              <span class="contact-link-icon">v</span> Vimeo
-            </a>
+            <a href="mailto:kanhaiyyalal812@gmail.com"><span class="link-icon">✉</span> kanhaiyyalal812@gmail.com</a>
+            <a href="https://www.instagram.com/kanhaiyya_8/" target="_blank" rel="noopener"><span class="link-icon">⟐</span> @kanhaiyya_8</a>
+            <a href="https://www.linkedin.com/in/kanhaiyyalal-mahajan-58b93236b" target="_blank" rel="noopener"><span class="link-icon">in</span> LinkedIn</a>
+            <a href="https://wa.me/918668427210?text=hey%20i%20want%20to%20know%20more%20about%20your%20services" target="_blank" rel="noopener"><span class="link-icon"><svg style="width: 14px; height: 14px; vertical-align: -2px;" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></span> Chat with me</a>
           </div>
         </div>
+        <!-- Sign up at formspree.io, create a form, paste your ID here -->
+        <form class="contact-form reveal-right" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
+          <select name="project-type" id="project-type" required>
+            <option value="" disabled selected>Project type</option>
+            <option value="brand-video">Brand Video</option>
+            <option value="reels">Reels & Short-Form</option>
+            <option value="youtube">YouTube Editing</option>
+            <option value="motion">Motion Graphics</option>
+            <option value="other">Other</option>
+            <option value="other-option">Other option</option>
+          </select>
+          <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+          <button type="submit" class="btn-send">Send Message</button>
+        </form>
       </div>
-    </section>
-
-  </main>
+    </div>
+  </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <p class="footer-text">&copy; 2026 KANVAS. Built with intent.</p>
+      <div class="footer-inner">
+        <span class="footer-logo">KANVAS</span>
+        <span class="footer-center">© 2026 Kanvas. Mumbai, India.</span>
+        <span class="footer-right">Built with intent.</span>
+      </div>
     </div>
   </footer>
 
+  <!-- ===== PROJECT MODAL ===== -->
+  <div class="project-modal" id="project-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close">✕</button>
+      <div class="modal-video-wrapper">
+        <iframe src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+      <h3 class="modal-title"></h3>
+      <p class="modal-desc"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
